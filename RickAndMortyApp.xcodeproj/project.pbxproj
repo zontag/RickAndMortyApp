@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		693BF24E245CA31A00F09B38 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693BF24A245CA31A00F09B38 /* SnapKit.framework */; };
+		693BF24F245CA31A00F09B38 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693BF24B245CA31A00F09B38 /* ReactiveCocoa.framework */; };
+		693BF250245CA31A00F09B38 /* ReactiveMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693BF24C245CA31A00F09B38 /* ReactiveMapKit.framework */; };
+		693BF251245CA31A00F09B38 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693BF24D245CA31A00F09B38 /* ReactiveSwift.framework */; };
 		6974DBBD245C3623008E1735 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBBC245C3623008E1735 /* AppDelegate.swift */; };
 		6974DBBF245C3623008E1735 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBBE245C3623008E1735 /* SceneDelegate.swift */; };
 		6974DBC1245C3623008E1735 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBC0245C3623008E1735 /* ViewController.swift */; };
@@ -37,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		693BF24A245CA31A00F09B38 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		693BF24B245CA31A00F09B38 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		693BF24C245CA31A00F09B38 /* ReactiveMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMapKit.framework; path = Carthage/Build/iOS/ReactiveMapKit.framework; sourceTree = "<group>"; };
+		693BF24D245CA31A00F09B38 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		6974DBB9245C3623008E1735 /* RickAndMortyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6974DBBC245C3623008E1735 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6974DBBE245C3623008E1735 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +68,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				693BF250245CA31A00F09B38 /* ReactiveMapKit.framework in Frameworks */,
+				693BF24E245CA31A00F09B38 /* SnapKit.framework in Frameworks */,
+				693BF24F245CA31A00F09B38 /* ReactiveCocoa.framework in Frameworks */,
+				693BF251245CA31A00F09B38 /* ReactiveSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,9 +92,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		693BF249245CA2DD00F09B38 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				693BF24B245CA31A00F09B38 /* ReactiveCocoa.framework */,
+				693BF24C245CA31A00F09B38 /* ReactiveMapKit.framework */,
+				693BF24D245CA31A00F09B38 /* ReactiveSwift.framework */,
+				693BF24A245CA31A00F09B38 /* SnapKit.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
 		6974DBB0245C3623008E1735 = {
 			isa = PBXGroup;
 			children = (
+				693BF249245CA2DD00F09B38 /* Framework */,
 				6974DBBB245C3623008E1735 /* RickAndMortyApp */,
 				6974DBD5245C362B008E1735 /* RickAndMortyAppTests */,
 				6974DBE0245C362B008E1735 /* RickAndMortyAppUITests */,
@@ -168,6 +192,7 @@
 				6974DBB5245C3623008E1735 /* Sources */,
 				6974DBB6245C3623008E1735 /* Frameworks */,
 				6974DBB7245C3623008E1735 /* Resources */,
+				693BF252245CA3A200F09B38 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -282,6 +307,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		693BF252245CA3A200F09B38 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"$(SRCROOT)/input.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = Carthage;
+			outputFileListPaths = (
+				"$(SRCROOT)/output.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6974DBB5245C3623008E1735 /* Sources */ = {
@@ -460,6 +508,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BSPWLUU5V5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RickAndMortyApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -478,6 +530,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BSPWLUU5V5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RickAndMortyApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
