@@ -16,7 +16,7 @@
 		6974DBD7245C362B008E1735 /* RickAndMortyAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBD6245C362B008E1735 /* RickAndMortyAppTests.swift */; };
 		6974DBE2245C362B008E1735 /* RickAndMortyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBE1245C362B008E1735 /* RickAndMortyAppUITests.swift */; };
 		6974DBF3245C6A13008E1735 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBF2245C6A13008E1735 /* Container.swift */; };
-		6974DBF6245C6A9E008E1735 /* ViewCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBF5245C6A9E008E1735 /* ViewCoding.swift */; };
+		6974DBF6245C6A9E008E1735 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBF5245C6A9E008E1735 /* Injectable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 		6974DBE1245C362B008E1735 /* RickAndMortyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyAppUITests.swift; sourceTree = "<group>"; };
 		6974DBE3245C362B008E1735 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6974DBF2245C6A13008E1735 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
-		6974DBF5245C6A9E008E1735 /* ViewCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoding.swift; sourceTree = "<group>"; };
+		6974DBF5245C6A9E008E1735 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,7 @@
 		6974DBBB245C3623008E1735 /* RickAndMortyApp */ = {
 			isa = PBXGroup;
 			children = (
-				6974DBF4245C6A52008E1735 /* View */,
+				6974DBF7245C95ED008E1735 /* Module */,
 				6974DBF1245C6A02008E1735 /* DI */,
 				6974DBEF245C5256008E1735 /* Supporting Files */,
 				6974DBC0245C3623008E1735 /* ViewController.swift */,
@@ -145,17 +145,17 @@
 		6974DBF1245C6A02008E1735 /* DI */ = {
 			isa = PBXGroup;
 			children = (
+				6974DBF5245C6A9E008E1735 /* Injectable.swift */,
 				6974DBF2245C6A13008E1735 /* Container.swift */,
 			);
 			name = DI;
 			sourceTree = "<group>";
 		};
-		6974DBF4245C6A52008E1735 /* View */ = {
+		6974DBF7245C95ED008E1735 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				6974DBF5245C6A9E008E1735 /* ViewCoding.swift */,
 			);
-			name = View;
+			name = Module;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,7 +292,7 @@
 				6974DBC7245C3623008E1735 /* RickAndMortyApp.xcdatamodeld in Sources */,
 				6974DBC1245C3623008E1735 /* ViewController.swift in Sources */,
 				6974DBBD245C3623008E1735 /* AppDelegate.swift in Sources */,
-				6974DBF6245C6A9E008E1735 /* ViewCoding.swift in Sources */,
+				6974DBF6245C6A9E008E1735 /* Injectable.swift in Sources */,
 				6974DBBF245C3623008E1735 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

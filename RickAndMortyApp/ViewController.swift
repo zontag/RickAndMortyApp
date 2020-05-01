@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, ViewCoding {
+class ViewController: UIViewController, Injectable {
     
     var text: String!
     

@@ -9,14 +9,12 @@
 import Foundation
 import UIKit
 
-protocol ViewCoding: UIViewController {
-
-    init(_ container: Container)
+protocol Injectable {
     
     func inject(_ container: Container)
 }
 
-extension ViewCoding {
+extension Injectable where Self: UIViewController {
     
     init(_ container: Container) {
         self.init(nibName: nil, bundle: nil)
