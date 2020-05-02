@@ -11,9 +11,12 @@
 		693BF24F245CA31A00F09B38 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693BF24B245CA31A00F09B38 /* ReactiveCocoa.framework */; };
 		693BF250245CA31A00F09B38 /* ReactiveMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693BF24C245CA31A00F09B38 /* ReactiveMapKit.framework */; };
 		693BF251245CA31A00F09B38 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693BF24D245CA31A00F09B38 /* ReactiveSwift.framework */; };
+		693BF255245CA67600F09B38 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693BF254245CA67600F09B38 /* CharacterView.swift */; };
+		693BF257245CACA300F09B38 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693BF256245CACA300F09B38 /* AppCoordinator.swift */; };
+		693BF259245CAD4100F09B38 /* CharacterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693BF258245CAD4100F09B38 /* CharacterCoordinator.swift */; };
 		6974DBBD245C3623008E1735 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBBC245C3623008E1735 /* AppDelegate.swift */; };
 		6974DBBF245C3623008E1735 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBBE245C3623008E1735 /* SceneDelegate.swift */; };
-		6974DBC1245C3623008E1735 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBC0245C3623008E1735 /* ViewController.swift */; };
+		6974DBC1245C3623008E1735 /* CharacterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBC0245C3623008E1735 /* CharacterVC.swift */; };
 		6974DBC7245C3623008E1735 /* RickAndMortyApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBC5245C3623008E1735 /* RickAndMortyApp.xcdatamodeld */; };
 		6974DBC9245C362A008E1735 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6974DBC8245C362A008E1735 /* Assets.xcassets */; };
 		6974DBCC245C362A008E1735 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6974DBCA245C362A008E1735 /* LaunchScreen.storyboard */; };
@@ -21,6 +24,11 @@
 		6974DBE2245C362B008E1735 /* RickAndMortyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBE1245C362B008E1735 /* RickAndMortyAppUITests.swift */; };
 		6974DBF3245C6A13008E1735 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBF2245C6A13008E1735 /* Container.swift */; };
 		6974DBF6245C6A9E008E1735 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974DBF5245C6A9E008E1735 /* Injectable.swift */; };
+		69855ED5245CB6AA00CE5312 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69855ED4245CB6AA00CE5312 /* UIColor+AppColors.swift */; };
+		69855EDA245CC59900CE5312 /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69855ED9245CC59900CE5312 /* UIBarButtonItem+Extensions.swift */; };
+		69855EDD245CF45700CE5312 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69855EDC245CF45700CE5312 /* TabBarCoordinator.swift */; };
+		69EB32F0245DC2AC007EDDCF /* LocationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EB32EF245DC2AC007EDDCF /* LocationCoordinator.swift */; };
+		69EB32F2245DC32A007EDDCF /* EpisodeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EB32F1245DC32A007EDDCF /* EpisodeCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +53,13 @@
 		693BF24B245CA31A00F09B38 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		693BF24C245CA31A00F09B38 /* ReactiveMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMapKit.framework; path = Carthage/Build/iOS/ReactiveMapKit.framework; sourceTree = "<group>"; };
 		693BF24D245CA31A00F09B38 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
+		693BF254245CA67600F09B38 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
+		693BF256245CACA300F09B38 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		693BF258245CAD4100F09B38 /* CharacterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCoordinator.swift; sourceTree = "<group>"; };
 		6974DBB9245C3623008E1735 /* RickAndMortyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6974DBBC245C3623008E1735 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6974DBBE245C3623008E1735 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6974DBC0245C3623008E1735 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6974DBC0245C3623008E1735 /* CharacterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterVC.swift; sourceTree = "<group>"; };
 		6974DBC6245C3623008E1735 /* RickAndMortyApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RickAndMortyApp.xcdatamodel; sourceTree = "<group>"; };
 		6974DBC8245C362A008E1735 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6974DBCB245C362A008E1735 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +72,11 @@
 		6974DBE3245C362B008E1735 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6974DBF2245C6A13008E1735 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		6974DBF5245C6A9E008E1735 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
+		69855ED4245CB6AA00CE5312 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
+		69855ED9245CC59900CE5312 /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
+		69855EDC245CF45700CE5312 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		69EB32EF245DC2AC007EDDCF /* LocationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCoordinator.swift; sourceTree = "<group>"; };
+		69EB32F1245DC32A007EDDCF /* EpisodeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +119,16 @@
 			name = Framework;
 			sourceTree = "<group>";
 		};
+		693BF253245CA61400F09B38 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				6974DBC0245C3623008E1735 /* CharacterVC.swift */,
+				693BF254245CA67600F09B38 /* CharacterView.swift */,
+				693BF258245CAD4100F09B38 /* CharacterCoordinator.swift */,
+			);
+			name = Character;
+			sourceTree = "<group>";
+		};
 		6974DBB0245C3623008E1735 = {
 			isa = PBXGroup;
 			children = (
@@ -127,10 +153,11 @@
 		6974DBBB245C3623008E1735 /* RickAndMortyApp */ = {
 			isa = PBXGroup;
 			children = (
+				69855ED6245CBE0700CE5312 /* View */,
+				69855ED3245CB66300CE5312 /* Extension */,
 				6974DBF7245C95ED008E1735 /* Module */,
 				6974DBF1245C6A02008E1735 /* DI */,
 				6974DBEF245C5256008E1735 /* Supporting Files */,
-				6974DBC0245C3623008E1735 /* ViewController.swift */,
 			);
 			path = RickAndMortyApp;
 			sourceTree = "<group>";
@@ -156,6 +183,7 @@
 		6974DBEF245C5256008E1735 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				693BF256245CACA300F09B38 /* AppCoordinator.swift */,
 				6974DBBC245C3623008E1735 /* AppDelegate.swift */,
 				6974DBBE245C3623008E1735 /* SceneDelegate.swift */,
 				6974DBC8245C362A008E1735 /* Assets.xcassets */,
@@ -178,8 +206,52 @@
 		6974DBF7245C95ED008E1735 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				69EB32EE245DC280007EDDCF /* Episode */,
+				69EB32ED245DC275007EDDCF /* Location */,
+				69855EDB245CC7C800CE5312 /* TabBar */,
+				693BF253245CA61400F09B38 /* Character */,
 			);
 			name = Module;
+			sourceTree = "<group>";
+		};
+		69855ED3245CB66300CE5312 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				69855ED4245CB6AA00CE5312 /* UIColor+AppColors.swift */,
+				69855ED9245CC59900CE5312 /* UIBarButtonItem+Extensions.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		69855ED6245CBE0700CE5312 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		69855EDB245CC7C800CE5312 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				69855EDC245CF45700CE5312 /* TabBarCoordinator.swift */,
+			);
+			name = TabBar;
+			sourceTree = "<group>";
+		};
+		69EB32ED245DC275007EDDCF /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				69EB32EF245DC2AC007EDDCF /* LocationCoordinator.swift */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		69EB32EE245DC280007EDDCF /* Episode */ = {
+			isa = PBXGroup;
+			children = (
+				69EB32F1245DC32A007EDDCF /* EpisodeCoordinator.swift */,
+			);
+			name = Episode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,10 +409,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				6974DBF3245C6A13008E1735 /* Container.swift in Sources */,
+				69855ED5245CB6AA00CE5312 /* UIColor+AppColors.swift in Sources */,
+				69855EDD245CF45700CE5312 /* TabBarCoordinator.swift in Sources */,
+				69EB32F0245DC2AC007EDDCF /* LocationCoordinator.swift in Sources */,
 				6974DBC7245C3623008E1735 /* RickAndMortyApp.xcdatamodeld in Sources */,
-				6974DBC1245C3623008E1735 /* ViewController.swift in Sources */,
+				69855EDA245CC59900CE5312 /* UIBarButtonItem+Extensions.swift in Sources */,
+				69EB32F2245DC32A007EDDCF /* EpisodeCoordinator.swift in Sources */,
+				6974DBC1245C3623008E1735 /* CharacterVC.swift in Sources */,
 				6974DBBD245C3623008E1735 /* AppDelegate.swift in Sources */,
+				693BF257245CACA300F09B38 /* AppCoordinator.swift in Sources */,
 				6974DBF6245C6A9E008E1735 /* Injectable.swift in Sources */,
+				693BF259245CAD4100F09B38 /* CharacterCoordinator.swift in Sources */,
+				693BF255245CA67600F09B38 /* CharacterView.swift in Sources */,
 				6974DBBF245C3623008E1735 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
