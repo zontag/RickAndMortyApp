@@ -1,34 +1,26 @@
-//
-//  CharactersCoordinator.swift
-//  RickAndMortyApp
-//
-//  Created by Tiago Louis Zontag on 01/05/20.
-//  Copyright © 2020 Tiago Louis Zontag. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
-class CharacterCoordinator: Coordinator {
+class LocationCoordinator: Coordinator {
     private let presenter: UINavigationController
-    private var charactersVC: CharacterVC?
+    private var locationVC: UIViewController?
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
     }
     
     func start() {
-        let charactersVC = CharacterVC(container)
-        charactersVC.title = "Character"
+        let locationVC = UIViewController()
+        locationVC.title = "Location"
         let button = UIBarButtonItem(
             title: "Filter",
             style: .plain,
             target: self,
             action: #selector(filterAction))
             .plainStyle()
-        charactersVC.navigationItem.rightBarButtonItem = button
-        presenter.pushViewController(charactersVC, animated: true)
-        self.charactersVC = charactersVC
+        locationVC.navigationItem.rightBarButtonItem = button
+        presenter.pushViewController(locationVC, animated: true)
+        self.locationVC = locationVC
     }
     
     @objc private func filterAction(_ sender: AnyObject) {
