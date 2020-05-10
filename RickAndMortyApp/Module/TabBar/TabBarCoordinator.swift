@@ -9,6 +9,20 @@ class TabBarCoordinator: Coordinator {
     var locationCoordinator: LocationCoordinator
     var episodeCoordinator: EpisodeCoordinator
     
+    private var characterStore = Store<CharacterState, CharacterAction>(
+    initialState: CharacterState(
+        filter: .init(
+            name: "",
+            species: "",
+            status: .none,
+            gender: .none),
+        isLoading: false,
+        items: [],
+        page: 0,
+        pages: 0,
+        errorMessage: nil),
+    reducer: characterReducer)
+    
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
         self.tabBarController.view.backgroundColor = .white
@@ -19,7 +33,9 @@ class TabBarCoordinator: Coordinator {
         characterPresenter.tabBarItem = UITabBarItem(title: "Character",
                                                      image: #imageLiteral(resourceName: "tab_character_inactive"),
                                                      selectedImage: #imageLiteral(resourceName: "tab_character_active"))
-        self.characterCoordinator = CharacterCoordinator(presenter: characterPresenter)
+        self.characterCoordinator = CharacterCoordinator(
+            presenter: characterPresenter,
+            store: characterStore)
         
         let locationPresenter = UINavigationController()
         locationPresenter.navigationBar.prefersLargeTitles = true
@@ -38,8 +54,7 @@ class TabBarCoordinator: Coordinator {
         tabBarController.setViewControllers(
             [characterPresenter,
              locationPresenter,
-             episodePresenter
-            ],
+             episodePresenter],
             animated: false)
     }
     

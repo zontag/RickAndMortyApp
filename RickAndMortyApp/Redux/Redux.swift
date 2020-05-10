@@ -3,7 +3,7 @@ import ReactiveSwift
 import ReactiveCocoa
 
 // MARK: - Reducer
-struct Reducer<State, Action>: Injectable {
+struct Reducer<State, Action> {
     
     typealias ReducerClosure<State, Action> = (
         inout MutableProperty<State>,
@@ -11,10 +11,11 @@ struct Reducer<State, Action>: Injectable {
         Environment)
         -> SignalProducer<Action, Never>?
     
+    var environment: Environment
     var reducer: ReducerClosure<State, Action>
     
     func callAsFunction(_ state: inout MutableProperty<State>, _ action: Action) -> SignalProducer<Action, Never>? {
-        return reducer(&state, action, resolver)
+        return reducer(&state, action, environment)
     }
 }
 
@@ -25,7 +26,6 @@ final class Store<State, Action> {
     
     var state: MutableProperty<State>
     
-    
     init(initialState: State, reducer: Reducer<State, Action>) {
         self.state = MutableProperty<State>(initialState)
         self.reducer = reducer
@@ -33,7 +33,8 @@ final class Store<State, Action> {
     
     func send(_ action: Action) {
         reducer(&state, action)?
+            .take(during: lifetime)
             .observe(on: UIScheduler())
-        .startWithValues(send)
+            .startWithValues(send)
     }
 }

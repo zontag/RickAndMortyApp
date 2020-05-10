@@ -1,17 +1,9 @@
-//
-//  RMProvider.swift
-//  RickAndMortyApp
-//
-//  Created by Tiago Louis Zontag on 03/05/20.
-//  Copyright © 2020 Tiago Louis Zontag. All rights reserved.
-//
-
 import Foundation
 import Moya
 import ReactiveSwift
 import ReactiveMoya
 
-class RMProvider: Injectable {
+class RMProvider {
     
     enum Failure: LocalizedError {
         case fetchFailure
@@ -26,15 +18,25 @@ class RMProvider: Injectable {
     
     static let shared = RMProvider()
     
-    private lazy var rmService: MoyaProvider<RMService> = self.resolver()
+    private lazy var rmService: MoyaProvider<RMService> = appEnvironment.resolve()
     
     private init () { }
     
-    func fetchCharacters(page: Int) -> SignalProducer<([Character], Int), Failure> {
-        rmService.reactive.request(.characters(page: page))
-            .logEvents()
-            .map(Response<Character>.self)
-            .map { ($0.results, $0.info.pages) }
-            .mapError { _ in return Failure.fetchFailure }
+    func fetchCharacters(
+        page: Int,
+        name: String,
+        status: String,
+        gender: String,
+        species: String)
+        -> SignalProducer<([Character], Int), Failure> {
+            rmService.reactive.request(.characters(
+                page: page,
+                name: name,
+                status: status,
+                gender: gender,
+                species: species))
+                .map(Response<Character>.self)
+                .map { ($0.results, $0.info.pages) }
+                .mapError { _ in return Failure.fetchFailure }
     }
 }

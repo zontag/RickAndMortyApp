@@ -12,12 +12,7 @@ class EpisodeCoordinator: Coordinator {
     func start() {
         let episodeVC = UIViewController()
         episodeVC.title = "Episode"
-        let button = UIBarButtonItem(
-            title: "Filter",
-            style: .plain,
-            target: self,
-            action: #selector(filterAction))
-            .plainStyle()
+        let button = UIBarButtonItem.createPlain(title: "Filter", target: self, action: #selector(filterAction))
         episodeVC.navigationItem.rightBarButtonItem = button
         presenter.pushViewController(episodeVC, animated: true)
         self.episodeVC = episodeVC

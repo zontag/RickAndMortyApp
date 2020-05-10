@@ -1,38 +1,21 @@
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
 
-
-
-class CardCollectionViewController: UICollectionViewController, Injectable {
+class CardCollectionViewController: UICollectionViewController {
     
-    // MARK: - State
-    struct State {
-        let isLoading: Bool
-        let items: [CardCollectionViewCell.Data]
-        let page: Int
-        let pages: Int
-        let errorMessage: String?
-    }
-
-    // MARK: - Actions
-    enum Action {
-        case pageUp
-        case getData(page: Int)
-        case setData(_ data: [CardCollectionViewCell.Data], pages: Int)
-        case showError(String)
+    private var itemsSignal: Signal<[CardCollectionViewCell.Data], Never>!
+    private var items: [CardCollectionViewCell.Data] = [] {
+        didSet {
+            self.collectionView.reloadData()
+        }
     }
     
-    private var store: Store<State, Action>!
+    var onPrefetchItemsAt = MutableProperty<[IndexPath]>([])
     
-    convenience init(reducer: Reducer<CardCollectionViewController.State, CardCollectionViewController.Action>) {
+    convenience init(itemsSignal: Signal<[CardCollectionViewCell.Data], Never>) {
         self.init(collectionViewLayout: CardCollectionViewFlowLayout())
-        self.store = Store(
-            initialState: State(
-                isLoading: false,
-                items: [],
-                page: 0,
-                pages: 0,
-                errorMessage: nil),
-            reducer: reducer)
+        self.itemsSignal = itemsSignal
     }
     
     override func viewDidLoad() {
@@ -43,23 +26,11 @@ class CardCollectionViewController: UICollectionViewController, Injectable {
             CardCollectionViewCell.self,
             forCellWithReuseIdentifier: CardCollectionViewCell.identifier)
         self.collectionView.dataSource = self
-        store.state.signal.observeValues { value in
-            if value.errorMessage != nil {
-                let alert = UIAlertController(title: "OMG!", message: value.errorMessage, preferredStyle: .alert)
-                let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { _ in
-                    let page = self.store.state.value.page
-                    self.store.send(.getData(page: page))
-                })
-                alert.addAction(retryAction)
-                self.present(alert, animated: true, completion: nil)
-            }
-            self.collectionView.reloadData()
+        self.itemsSignal
+            .observe(on: UIScheduler())
+            .observeValues { values in
+                self.items = values
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.store.send(.pageUp)
     }
 }
 
@@ -71,8 +42,9 @@ extension CardCollectionViewController {
     
     override func collectionView(
         _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int) -> Int {
-        return store.state.value.items.count
+        numberOfItemsInSection section: Int)
+        -> Int {
+            return self.items.count
     }
     
     override func collectionView(
@@ -82,7 +54,7 @@ extension CardCollectionViewController {
             let cell = collectionView
                 .dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier,
                                      for: indexPath) as! CardCollectionViewCell
-            cell.setData(store.state.value.items[indexPath.row])
+            cell.setData(self.items[indexPath.row])
             return cell
     }
 }
@@ -92,15 +64,6 @@ extension CardCollectionViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(
         _ collectionView: UICollectionView,
         prefetchItemsAt indexPaths: [IndexPath]) {
-        debugPrint(indexPaths)
-        
-        guard !self.store.state.value.isLoading,
-            self.store.state.value.page < self.store.state.value.pages,
-            indexPaths.last?.row == self.store.state.value.items.count - 1
-            else {
-                return
-        }
-        
-        self.store.send(.pageUp)
+        self.onPrefetchItemsAt.value = indexPaths
     }
 }

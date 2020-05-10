@@ -2,7 +2,7 @@ import Foundation
 import Moya
 
 enum RMService {
-    case characters(page: Int)
+    case characters(page: Int, name: String, status: String, gender: String, species: String)
 }
 
 extension RMService: TargetType {
@@ -23,8 +23,15 @@ extension RMService: TargetType {
     }
     var task: Task {
         switch self {
-        case .characters(let page):
-            return .requestParameters(parameters: ["page": page], encoding: URLEncoding.queryString)
+        case let .characters(page, name, status, gender, species):
+            return .requestParameters(
+                parameters: [
+                    "page": page,
+                    "name": name,
+                    "status": status,
+                    "gender": gender,
+                    "species": species],
+                encoding: URLEncoding.queryString)
         }
     }
     
