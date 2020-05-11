@@ -19,7 +19,7 @@ class CharacterDetailTableViewController: UITableViewController {
         self.tableView.register(
             CharacterDetailHeaderTableViewCell.self,
             forCellReuseIdentifier: CharacterDetailHeaderTableViewCell.identifier)
-//        self.tableView.rowHeight = UITableView.automaticDimension
+        //        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.backgroundColor = .white
         self.tableView.separatorStyle = .singleLine
         self.tableView.separatorInsetReference = .fromAutomaticInsets
@@ -110,7 +110,7 @@ class CharacterDetailTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? UITableView.automaticDimension
-        : indexPath.section == 1 ? 60 : 77
+            : indexPath.section == 1 ? 60 : 77
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

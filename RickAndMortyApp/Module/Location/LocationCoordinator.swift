@@ -12,7 +12,10 @@ class LocationCoordinator: Coordinator {
     func start() {
         let locationVC = UIViewController()
         locationVC.title = "Location"
-        let button = UIBarButtonItem.createPlain(title: "Filter", target: self, action: #selector(filterAction))
+        let button = DotPlainBarButtonItem(
+            title: "Filter",
+            target: self,
+            action: #selector(filterAction))
         locationVC.navigationItem.rightBarButtonItem = button
         presenter.pushViewController(locationVC, animated: true)
         self.locationVC = locationVC

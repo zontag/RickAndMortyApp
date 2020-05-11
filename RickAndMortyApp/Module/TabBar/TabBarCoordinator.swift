@@ -10,18 +10,18 @@ class TabBarCoordinator: Coordinator {
     var episodeCoordinator: EpisodeCoordinator
     
     private var characterStore = Store<CharacterState, CharacterAction>(
-    initialState: CharacterState(
-        filter: .init(
-            name: "",
-            species: "",
-            status: .none,
-            gender: .none),
-        isLoading: false,
-        items: [],
-        page: 0,
-        pages: 0,
-        errorMessage: nil),
-    reducer: characterReducer)
+        initialState: CharacterState(
+            filter: .init(
+                name: "",
+                species: "",
+                status: .none,
+                gender: .none),
+            isLoading: false,
+            items: [],
+            page: 0,
+            pages: 0,
+            errorMessage: nil),
+        reducer: characterReducer)
     
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController

@@ -41,14 +41,13 @@ class CharacterFilterTableViewController: UITableViewController {
         self.tableView.register(
             ToggleTableViewCell.self,
             forCellReuseIdentifier: ToggleTableViewCell.subtitleReuseIdentifier)
-        self.tableView.contentInset = UIEdgeInsets(top: 73, left: 46, bottom: 0, right: -46)
         self.tableView.backgroundColor = .white
         self.tableView.separatorStyle = .singleLine
         self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 46, bottom: 0, right: 0)
         self.tableView.separatorInsetReference = .fromAutomaticInsets
         self.tableView.allowsMultipleSelection = false
         self.clearsSelectionOnViewWillAppear = true
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.createRounded(
+        self.navigationItem.rightBarButtonItem = RoundedBarButtonItem(
             title: "APPLY",
             target: self,
             action: #selector(applyAction))
@@ -58,10 +57,6 @@ class CharacterFilterTableViewController: UITableViewController {
             .map(\.filter)
             .observe(on: UIScheduler())
             .startWithValues(applyFilter)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     private func applyFilter(_ filter: CharacterFilterState) {
@@ -115,21 +110,24 @@ class CharacterFilterTableViewController: UITableViewController {
                 : section == 1 ? "Species"
                 : ""
             
+            cell.arrowEnabled = false
+            
             var state = false
             
             switch filterTypeFor(indexPath) {
             case .name:
                 state = !self.filter.name.isEmpty
                 cell.detailTextLabel?.text = self.filter.name.isEmpty ? "Give a name" : self.filter.name
+                cell.arrowEnabled = true
             case .species:
                 state = !self.filter.species.isEmpty
                 cell.detailTextLabel?.text = self.filter.species.isEmpty ? "Select one" : self.filter.species
+                cell.arrowEnabled = true
             case .status:
                 cellTitle
                     = row == 0 ? "Alive"
                     : row == 1 ? "Dead"
                     : row == 2 ? "Unknown" : ""
-                
                 state
                     = row == 0 ? filter.status == .alive
                     : row == 1 ? filter.status == .dead
@@ -141,7 +139,6 @@ class CharacterFilterTableViewController: UITableViewController {
                     : row == 2 ? "Genderless"
                     : row == 3 ? "Unknown"
                     : ""
-                
                 state
                     = row == 0 ? filter.gender == .female
                     : row == 1 ? filter.gender == .male

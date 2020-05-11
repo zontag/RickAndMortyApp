@@ -27,6 +27,7 @@ class CharacterFilterCoordinator: Coordinator {
     }
 }
 
+// MARK: - CharacterFilterTableViewControllerDelegate
 extension CharacterFilterCoordinator: CharacterFilterTableViewControllerDelegate {
     func goSearchForName() {
         let searchVC = SearchTableViewController(
@@ -47,7 +48,7 @@ extension CharacterFilterCoordinator: CharacterFilterTableViewControllerDelegate
             .map { return CharacterAction.setFilter(.name($0)) }
             .observeValues(self.store.send)
         searchVC.title = "Name"
-
+        
         self.navController.show(searchVC, sender: self)
     }
     

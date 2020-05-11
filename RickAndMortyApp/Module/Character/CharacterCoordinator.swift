@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import ReactiveSwift
+import ReactiveCocoa
 
 class CharacterCoordinator: Coordinator {
     private let (lifetime, token) = Lifetime.make()
@@ -8,7 +9,7 @@ class CharacterCoordinator: Coordinator {
     private var store: Store<CharacterState, CharacterAction>
     private var filterCoordinator: CharacterFilterCoordinator?
     private var charactersVC: CardCollectionViewController?
-
+    
     init(presenter: UINavigationController, store: Store<CharacterState, CharacterAction>) {
         self.presenter = presenter
         self.store = store
@@ -28,15 +29,15 @@ class CharacterCoordinator: Coordinator {
             .signal
             .take(during: lifetime)
             .observeValues { indexPaths in
-            guard !self.store.state.value.isLoading,
-                self.store.state.value.page < self.store.state.value.pages,
-                indexPaths.last?.row == self.store.state.value.items.count - 1
-                else {
-                    return
+                guard !self.store.state.value.isLoading,
+                    self.store.state.value.page < self.store.state.value.pages,
+                    indexPaths.last?.row == self.store.state.value.items.count - 1
+                    else {
+                        return
                 }
                 
                 
-            self.store.send(.pageUp)
+                self.store.send(.pageUp)
         }
         
         charactersVC.didSelectAtRow.signal
@@ -53,8 +54,17 @@ class CharacterCoordinator: Coordinator {
         }
         
         charactersVC.title = "Character"
-        let button = UIBarButtonItem.createPlain(title: "Filter", target: self, action: #selector(filterAction))
+        let button = DotPlainBarButtonItem(title: "Filter", target: self, action: #selector(filterAction))
+        
         charactersVC.navigationItem.rightBarButtonItem = button
+        
+        self.store.state.signal
+            .take(during: lifetime)
+            .map(\.filter.isActive)
+            .observe(on: UIScheduler())
+            .observeValues { isActive in
+                button.dotIsHidden = !isActive }
+        
         presenter.pushViewController(charactersVC, animated: true)
         self.charactersVC = charactersVC
         self.store.send(.pageUp)

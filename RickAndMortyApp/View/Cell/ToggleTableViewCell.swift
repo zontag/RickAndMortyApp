@@ -18,9 +18,17 @@ class ToggleTableViewCell: UITableViewCell {
     static let defaultReuseIdentifier = "DefaultReuseIdentifier"
     static let subtitleReuseIdentifier = "SubtitleReuseIdentifier"
     
+    private var arrowImageView: UIImageView!
+    
     var state: State = .off {
         didSet {
             self.imageView?.image = state == .on ? #imageLiteral(resourceName: "cell_toggle_on") : #imageLiteral(resourceName: "cell_toggle_off")
+        }
+    }
+    
+    var arrowEnabled = false {
+        didSet {
+            self.arrowImageView.isHidden = !self.arrowEnabled
         }
     }
 
@@ -29,6 +37,9 @@ class ToggleTableViewCell: UITableViewCell {
             style: reuseIdentifier == ToggleTableViewCell.subtitleReuseIdentifier
                 ? .subtitle : .default,
             reuseIdentifier: reuseIdentifier)
+        self.arrowImageView = UIImageView(image: #imageLiteral(resourceName: "icon_arrow_right"))
+        self.arrowImageView.contentMode = .scaleAspectFit
+        self.arrowImageView.isHidden = !self.arrowEnabled
         self.backgroundColor = .white
         self.imageView?.image = #imageLiteral(resourceName: "cell_toggle_off")
         self.selectionStyle = .none
@@ -41,6 +52,13 @@ class ToggleTableViewCell: UITableViewCell {
             self.textLabel?.textColor = .rowTitle
             self.detailTextLabel?.textColor = .rowSubtitle
         }
+        self.contentView.addSubview(arrowImageView)
+        self.arrowImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(self.contentView)
+            make.trailing.equalTo(self.contentView).offset(-16)
+            make.height.equalTo(16)
+            make.width.equalTo(16)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -51,5 +69,6 @@ class ToggleTableViewCell: UITableViewCell {
         self.imageView?.image = #imageLiteral(resourceName: "cell_toggle_off")
         self.textLabel?.text = nil
         self.detailTextLabel?.text = nil
+        self.arrowImageView.isHidden = true
     }
 }

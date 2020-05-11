@@ -17,6 +17,13 @@ struct CharacterFilterState {
         case none = ""
     }
     
+    var isActive: Bool {
+        !self.name.isEmpty
+            || !self.species.isEmpty
+            || status != .none
+            || gender != .none
+    }
+    
     let name: String
     let species: String
     let status: Status
