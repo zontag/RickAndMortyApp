@@ -12,6 +12,10 @@
 		691E9EFD245F6A470084A83D /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 691E9EFC245F6A470084A83D /* ReactiveCocoa */; };
 		691E9EFF245F6AA40084A83D /* RMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E9EFE245F6AA40084A83D /* RMService.swift */; };
 		691E9F0B245F6E990084A83D /* RMProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E9F0A245F6E990084A83D /* RMProvider.swift */; };
+		6921103E2468A524000BDCAD /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6921103D2468A524000BDCAD /* InfoTableViewCell.swift */; };
+		692110412468C76D000BDCAD /* CharacterDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692110402468C76D000BDCAD /* CharacterDetailTableViewController.swift */; };
+		692110432468CA9E000BDCAD /* CharacterDetailHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692110422468CA9E000BDCAD /* CharacterDetailHeaderTableViewCell.swift */; };
+		692110452468F050000BDCAD /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692110442468F050000BDCAD /* DetailHeaderView.swift */; };
 		693BF257245CACA300F09B38 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693BF256245CACA300F09B38 /* AppCoordinator.swift */; };
 		693BF259245CAD4100F09B38 /* CharacterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693BF258245CAD4100F09B38 /* CharacterCoordinator.swift */; };
 		694DDE742460D41200EACE09 /* CharacterReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694DDE732460D41200EACE09 /* CharacterReducer.swift */; };
@@ -70,6 +74,10 @@
 /* Begin PBXFileReference section */
 		691E9EFE245F6AA40084A83D /* RMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMService.swift; sourceTree = "<group>"; };
 		691E9F0A245F6E990084A83D /* RMProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMProvider.swift; sourceTree = "<group>"; };
+		6921103D2468A524000BDCAD /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		692110402468C76D000BDCAD /* CharacterDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailTableViewController.swift; sourceTree = "<group>"; };
+		692110422468CA9E000BDCAD /* CharacterDetailHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		692110442468F050000BDCAD /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		693BF256245CACA300F09B38 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		693BF258245CAD4100F09B38 /* CharacterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCoordinator.swift; sourceTree = "<group>"; };
 		694DDE732460D41200EACE09 /* CharacterReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterReducer.swift; sourceTree = "<group>"; };
@@ -154,8 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				698D295D2463A25A00F71BE0 /* SearchView */,
-				698D29602463AAEE00F71BE0 /* Header */,
 				698D29582462E35D00F71BE0 /* Cell */,
+				698D29602463AAEE00F71BE0 /* Header */,
 				691E9F02245F6C650084A83D /* CardCollection */,
 			);
 			path = View;
@@ -213,6 +221,7 @@
 		691E9F07245F6CA40084A83D /* Character */ = {
 			isa = PBXGroup;
 			children = (
+				6921103F2468C723000BDCAD /* CharacterDetail */,
 				697D91CD2461FA4000DCD4A8 /* CharacterFilter */,
 				694DDE732460D41200EACE09 /* CharacterReducer.swift */,
 				693BF258245CAD4100F09B38 /* CharacterCoordinator.swift */,
@@ -236,6 +245,14 @@
 				6974DBF2245C6A13008E1735 /* Environment.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		6921103F2468C723000BDCAD /* CharacterDetail */ = {
+			isa = PBXGroup;
+			children = (
+				692110402468C76D000BDCAD /* CharacterDetailTableViewController.swift */,
+			);
+			path = CharacterDetail;
 			sourceTree = "<group>";
 		};
 		6974DBB0245C3623008E1735 = {
@@ -318,6 +335,8 @@
 			isa = PBXGroup;
 			children = (
 				698D29592462E3F300F71BE0 /* ToggleTableViewCell.swift */,
+				6921103D2468A524000BDCAD /* InfoTableViewCell.swift */,
+				692110422468CA9E000BDCAD /* CharacterDetailHeaderTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -334,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				698D29612463AB2C00F71BE0 /* FilterHeaderView.swift */,
+				692110442468F050000BDCAD /* DetailHeaderView.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -509,6 +529,7 @@
 				691E9EFF245F6AA40084A83D /* RMService.swift in Sources */,
 				69855ED5245CB6AA00CE5312 /* UIColor+AppColors.swift in Sources */,
 				698D296424647E2D00F71BE0 /* CharacterAction.swift in Sources */,
+				692110452468F050000BDCAD /* DetailHeaderView.swift in Sources */,
 				6983B8BF245E0FB300EC162B /* UIView+Extension.swift in Sources */,
 				69855EDD245CF45700CE5312 /* TabBarCoordinator.swift in Sources */,
 				69E89CBA245F61F000497289 /* Pair.swift in Sources */,
@@ -531,7 +552,10 @@
 				694DDE742460D41200EACE09 /* CharacterReducer.swift in Sources */,
 				693BF259245CAD4100F09B38 /* CharacterCoordinator.swift in Sources */,
 				698D296624647E6C00F71BE0 /* CharacterState.swift in Sources */,
+				6921103E2468A524000BDCAD /* InfoTableViewCell.swift in Sources */,
 				6983B8B4245E020F00EC162B /* CardCollectionViewCell.swift in Sources */,
+				692110432468CA9E000BDCAD /* CharacterDetailHeaderTableViewCell.swift in Sources */,
+				692110412468C76D000BDCAD /* CharacterDetailTableViewController.swift in Sources */,
 				6974DBBF245C3623008E1735 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

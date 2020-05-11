@@ -35,7 +35,9 @@ extension CharacterFilterCoordinator: CharacterFilterTableViewControllerDelegate
                 .map { characters in
                     return characters
                         .map { character in
-                            return character.name }})
+                            return character.name }}
+                .map { names in
+                    Array(Set(names)) }) // Trick to remove duplicates
         
         searchVC.inputValue
             .signal
@@ -44,6 +46,7 @@ extension CharacterFilterCoordinator: CharacterFilterTableViewControllerDelegate
             .delay(0.3, on: QueueScheduler.main)
             .map { return CharacterAction.setFilter(.name($0)) }
             .observeValues(self.store.send)
+        searchVC.title = "Name"
 
         self.navController.show(searchVC, sender: self)
     }
@@ -66,6 +69,8 @@ extension CharacterFilterCoordinator: CharacterFilterTableViewControllerDelegate
             .delay(0.3, on: QueueScheduler.main)
             .map { return CharacterAction.setFilter(.species($0)) }
             .observeValues(self.store.send)
+        
+        searchVC.title = "Species"
         
         self.navController.show(searchVC, sender: self)
     }

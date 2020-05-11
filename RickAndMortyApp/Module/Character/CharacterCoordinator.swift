@@ -8,8 +8,7 @@ class CharacterCoordinator: Coordinator {
     private var store: Store<CharacterState, CharacterAction>
     private var filterCoordinator: CharacterFilterCoordinator?
     private var charactersVC: CardCollectionViewController?
-    
-    
+
     init(presenter: UINavigationController, store: Store<CharacterState, CharacterAction>) {
         self.presenter = presenter
         self.store = store
@@ -24,7 +23,7 @@ class CharacterCoordinator: Coordinator {
                     subtitle: character.name)
                 }
             }.signal)
-        charactersVC.title = "Character"
+        
         charactersVC.onPrefetchItemsAt
             .signal
             .take(during: lifetime)
@@ -34,10 +33,26 @@ class CharacterCoordinator: Coordinator {
                 indexPaths.last?.row == self.store.state.value.items.count - 1
                 else {
                     return
-            }
-            
+                }
+                
+                
             self.store.send(.pageUp)
         }
+        
+        charactersVC.didSelectAtRow.signal
+            .take(during: lifetime)
+            .filter { return $0 != nil }
+            .map { $0! }
+            .map { self.store.state.value.items[$0] }
+            .observe(on: UIScheduler())
+            .observeValues { character in
+                self.presenter.pushViewController(
+                    CharacterDetailTableViewController(
+                        character: character),
+                    animated: true)
+        }
+        
+        charactersVC.title = "Character"
         let button = UIBarButtonItem.createPlain(title: "Filter", target: self, action: #selector(filterAction))
         charactersVC.navigationItem.rightBarButtonItem = button
         presenter.pushViewController(charactersVC, animated: true)

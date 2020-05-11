@@ -12,6 +12,7 @@ class CardCollectionViewController: UICollectionViewController {
     }
     
     var onPrefetchItemsAt = MutableProperty<[IndexPath]>([])
+    var didSelectAtRow = MutableProperty<Int?>(nil)
     
     convenience init(itemsSignal: Signal<[CardCollectionViewCell.Data], Never>) {
         self.init(collectionViewLayout: CardCollectionViewFlowLayout())
@@ -20,6 +21,7 @@ class CardCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.largeTitleDisplayMode = .always
         self.collectionView.prefetchDataSource = self
         self.collectionView.backgroundColor = .white
         self.collectionView.register(
@@ -31,6 +33,10 @@ class CardCollectionViewController: UICollectionViewController {
             .observeValues { values in
                 self.items = values
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 }
 
@@ -56,6 +62,11 @@ extension CardCollectionViewController {
                                      for: indexPath) as! CardCollectionViewCell
             cell.setData(self.items[indexPath.row])
             return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        self.didSelectAtRow.value = indexPath.row
     }
 }
 
